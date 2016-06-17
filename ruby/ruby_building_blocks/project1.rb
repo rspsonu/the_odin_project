@@ -1,23 +1,47 @@
-def caesar_cipher(text, num)
-	letters = text.split("")
-	i = 0
-	letters.each do |letter|
-		if (("a".."z") === letter || ("A".."Z") === letter)
-			if ((letter.ord + num > 90) && (("A".."Z") === letter))
-				letters[i] = (64 + ((letter.ord + num) - 90)).chr
-			elsif ((letter.ord + num > 122) && (("a".."a") === letter))
-				letters[i] = (96 + ((letter.ord + num) - 122)).chr
-			else
-				letters[i] = (letter.ord + num).chr
+def bubble_sort(array)
+	sort = 0
+	index = 0
+	length = array.length
+	while sort != 1
+		sort = 1
+		index = 0
+		array.each do |value|
+			if index < length-1 
+				if array[index] > array[index+1]
+					array[index],array[index+1] = array[index+1],array[index]
+					sort = 0
+				end
+				index += 1
 			end
 		end
-		i += 1
+		length -= 1
 	end
-	puts letters.join
+	puts array.to_s
 end
 
-puts "Enter the string to encrypt: "
-text = gets.chomp
-puts "Enter the index: "
-index = (gets.chomp).to_i
-caesar_cipher(text,index)
+bubble_sort([4,3,78,2,0,2])
+
+def bubble_sort_by(array)
+	sort = 0
+	index = 0
+	length = array.length
+	while sort != 1
+		sort = 1
+		index = 0
+		array.each do |value|
+			if index < length-1 
+				if yield(array[index],array[index+1]) > 0
+					array[index],array[index+1] = array[index+1],array[index]
+					sort = 0
+				end
+				index += 1
+			end
+		end
+		length -= 1
+	end
+	puts array.to_s
+end
+
+bubble_sort_by(["hi","hello","hey"]) do |left,right|
+ 	left.length - right.length
+end

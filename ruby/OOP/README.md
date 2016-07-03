@@ -1,3 +1,3 @@
-Open irb
-Create an instance of TicTacToe class
+Open irb \n
+Create an instance of TicTacToe class \n
 Enjoy!

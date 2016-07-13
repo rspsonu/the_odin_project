@@ -26,7 +26,6 @@ class TicTacToe
 		@player = sign.upcase
 		while !$win || !$draw
 			place
-			exit
 			showBoard
 			@win = checkWin
 			@draw = checkDraw
